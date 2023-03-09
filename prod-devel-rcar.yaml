@@ -203,8 +203,8 @@ components:
     sources:
       - *COMMON_SOURCES
       - type: git
-        url: https://github.com/xen-troops/meta-renesas.git
-        rev: "kirkstone-dev-patched"
+        url: https://github.com/renesas-rcar/meta-renesas.git
+        rev: "kirkstone-dev"
       - type: git
         url: https://git.yoctoproject.org/meta-selinux
         rev: kirkstone
@@ -267,8 +267,8 @@ components:
     sources:
       - *COMMON_SOURCES
       - type: git
-        url: https://github.com/xen-troops/meta-renesas.git
-        rev: "kirkstone-dev-patched"
+        url: https://github.com/renesas-rcar/meta-renesas.git
+        rev: "kirkstone-dev"
     builder:
       type: yocto
       work_dir: "%{DOMU_BUILD_DIR}"
@@ -451,7 +451,7 @@ parameters:
             sources:
               - type: git
                 url: "https://github.com/xen-troops/meta-rcar.git"
-                rev: kirkstone-Yocto-v5.9.0-patched
+                rev: xt-master
             builder:
               layers:
                 - "../meta-rcar/meta-rcar-gen3-adas"
