@@ -109,6 +109,12 @@ common_data:
     # Install some apps to test GPU/Display
     - [IMAGE_INSTALL:append, " glmark2 kmscube"]
 
+    # Do not mask bbappends (which purpose is to switch back to old DDK v1.11) in case of DomA build
+    # mask the recipes in order to use new DDK v1.15 for DomU build
+    - [BBMASK:append, " ${@bb.utils.contains('XT_GUEST_INSTALL', 'doma', '', 'meta-xt-rcar-fixups/recipes-kernel/kernel-module-gles/kernel-module-gles.bbappend', d)}"]
+    - [BBMASK:append, " ${@bb.utils.contains('XT_GUEST_INSTALL', 'doma', '', 'meta-xt-rcar-fixups/recipes-graphics/gles-module/gles-user-module.bbappend', d)}"]
+    - [BBMASK:append, " ${@bb.utils.contains('XT_GUEST_INSTALL', 'doma', '', 'meta-xt-rcar-fixups/recipes-graphics/packagegroups/packagegroup-graphic-renesas.bbappend', d)}"]
+
   # The same set of layers and configs is used both in DomD and DomU
   # to build a DDK from source code
   ddk_source_overrides: &DDK_SOURCE_OVERRIDES
